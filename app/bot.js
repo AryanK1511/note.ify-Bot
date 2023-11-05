@@ -56,7 +56,7 @@ client.on('interactionCreate', async interaction => {
       await uploadFile();
       let transcript = await quickstart();
 
-      const apiKey = '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'; // Replace with your ChatGPT API key
+      const apiKey = process.env.CHATGPT_API_KEY; // Replace with your ChatGPT API key
       const apiUrl = 'https://api.openai.com/v1/chat/completions'; // Check API documentation for the correct endpoint
 
       const inputText = transcript; // Replace with your input text
@@ -100,6 +100,7 @@ client.on('interactionCreate', async interaction => {
 
   } else if (interaction.commandName === 'stop-recording') {
     await interaction.reply(dataRetrieved);
+    dataRetrieved = "";
   }
 });
 
