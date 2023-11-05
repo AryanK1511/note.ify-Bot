@@ -1,7 +1,7 @@
 # note.ify-Bot
 <div align="center">
 
-![Note.ify Logo](./noteify.png)
+<img alt="Note.ify Logo" src="./noteify.png" width="300"/>
 
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
@@ -11,4 +11,9 @@
 
 </div>
 
-Note.ify is a discord bot designed to enhance the experience of live lectures and meetings. This bot is engineered to record real-time and provide concise summaries for users to reference at their convenience. Note.ify ensures that every key point is captured and presented in a well-organized format. This is mainly targeted towards the students who seek an easier and faster approach to review lecture content, but can be catered to professionals, researchers, and individuals who desires to eliminate manual-note taking. As future improvements, we plan to expand the current features in Note.ify to enhance individual’s note-taking abilities such as converting summary notes to the Cornell Note-taking Method, making flashcards, and generating potential exam questions.
+🤖 Note.ify is a discord bot designed to enhance the experience of live lectures and meetings.
+📝 The bot records real-time content and provides concise summaries for easy reference.
+📚 It ensures that every key point is captured and presented in a well-organized format.
+🎯 Targeted towards students seeking an efficient way to review lecture content.
+🌐 Also beneficial for professionals, researchers, and individuals looking to streamline note-taking.
+🚀 Future improvements include features like converting summary notes to the Cornell Note-taking Method, creating flashcards, and generating potential exam questions.
