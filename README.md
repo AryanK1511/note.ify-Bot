@@ -1,7 +1,7 @@
 # Note.ify Discord Bot
 <div align="center">
 
-<img alt="Note.ify Logo" src="./noteify.png" width="300"/>
+<img alt="Note.ify Logo" src="./noteify.png" width="300"/><br /><br />
 
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
