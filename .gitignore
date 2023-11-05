@@ -1,3 +1,4 @@
 .env
 node_modules
 google_cloud_config/speech-to-text-404121-f86c17d1ff27.json
+recording.wav
