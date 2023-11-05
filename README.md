@@ -1,4 +1,4 @@
-# note.ify-Bot
+# Note.ify Discord Bot
 <div align="center">
 
 <img alt="Note.ify Logo" src="./noteify.png" width="300"/>
