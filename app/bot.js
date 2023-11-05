@@ -6,22 +6,26 @@ const { exec } = require('child_process');
 const { Storage } = require('@google-cloud/storage');
 const path = require('path');
 const fs = require('fs');
-process.env['GOOGLE_APPLICATION_CREDENTIALS'] = 'speech-to-text-404121-f86c17d1ff27.json'; // Replace with the actual path
+process.env['GOOGLE_APPLICATION_CREDENTIALS'] = 'google_cloud_config/speech-to-text-404121-f86c17d1ff27.json'; // Replace with the actual path
 
+// Logs the bot user if the server starts successfully
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-const projectId = 'speech-to-text-404121'; // Replace with your GCP project ID
-const keyFilename = 'speech-to-text-404121-f86c17d1ff27.json'; // Replace with the path to your JSON key file
+// Imports the Google Cloud client library
+const projectId = process.env.PROJECT_ID; 
+const keyFilename = 'google_cloud_config/speech-to-text-404121-f86c17d1ff27.json'; 
 
+// Creates a storage object
 const storage = new Storage({
   projectId,
   keyFilename,
 });
 
-const bucketName = 'noteifybucket1'; // Replace with your GCS bucket name
-const localFilePath = 'recording1.wav'; // Replace with the path to your recorded audio file
+// Setting up file upload to Google Cloud Bucket Storage
+const bucketName = 'noteifybucket1';
+const localFilePath = 'recording1.wav'; 
 
 const bucket = storage.bucket(bucketName);
 const fileName = path.basename(localFilePath);
@@ -29,12 +33,12 @@ const fileName = path.basename(localFilePath);
 const speech = require('@google-cloud/speech');
 const speechClient = new speech.SpeechClient();
 
+// ===== Handles the interaction when a user enters a slash command =====
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
-
   if (interaction.commandName === 'start-recording') {
-    // await recordScript();
-    exec('python3 record.py', async (error, stdout, stderr) => {
+    await interaction.reply('Recording....');
+    exec('python3 scripts/record.py', async (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing Python script: ${error}`);
         
@@ -80,7 +84,7 @@ async function quickstart() {
     const transcription = response.results
         .map(result => result.alternatives[0].transcript)
         .join('\n');
-    console.log(`Transcription: ${transcription}`);
+    console.log(transcription);
   }
 
 
