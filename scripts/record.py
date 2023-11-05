@@ -6,8 +6,6 @@ import wavio as wv
 freq = 16000
 duration = 45
 
-print("shdfuiehu")
-
 # Start recorder with the given values of duration and sample frequencxy
 recording = sd.rec(int(duration * freq), samplerate=freq, channels=1)
 

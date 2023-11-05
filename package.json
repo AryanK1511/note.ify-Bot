@@ -20,6 +20,7 @@
     "discord-api-types": "^0.24.0",
     "discord.js": "^13.2.0",
     "dotenv": "^16.3.1",
-    "index.js": "^0.0.3"
+    "index.js": "^0.0.3",
+    "node-fetch": "^3.3.2"
   }
 }

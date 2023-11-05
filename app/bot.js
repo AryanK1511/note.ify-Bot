@@ -53,7 +53,37 @@ client.on('interactionCreate', async interaction => {
       }
 
       await uploadFile();
-      await quickstart();
+      let transcript = await quickstart();
+
+      const apiKey = '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'; // Replace with your ChatGPT API key
+      const apiUrl = 'https://api.openai.com/v1/completions'; // Check API documentation for the correct endpoint
+
+      const inputText = transcript; // Replace with your input text
+
+      const requestBody = {
+        model: 'davinci-002',
+        messages: [{ role: 'system', content: 'You are a professional note taker that summarizes important topics from given text. Ensure that the summarizes content had at least two sentences.' }, { role: 'user', content: inputText }],
+      };
+
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify(requestBody),
+      };
+
+      fetch(apiUrl, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+          const generatedNotes = data.choices[0].message.content; // Extract generated notes from the response
+
+          // Format the notes as Markdown (you may use a library like 'marked' here)
+          console.log(generatedNotes); // Print or use the formatted notes
+        })
+        .catch(error => console.error('Error:', error));
+      await interaction.editReply(transcript); // Edit the original reply
     });
 
   } else if (interaction.commandName === 'stop-recording') {
@@ -84,7 +114,7 @@ async function quickstart() {
     const transcription = response.results
         .map(result => result.alternatives[0].transcript)
         .join('\n');
-    console.log(transcription);
+    return transcription;
   }
 
 
