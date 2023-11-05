@@ -9,11 +9,11 @@
 ![Google Cloud](https://img.shields.io/badge/-Google_Cloud-4285F4?style=flat-square&logo=google-cloud&logoColor=white)
 ![ChatGPT](https://img.shields.io/badge/-ChatGPT-008080?style=flat-square)
 
-</div>
+</div><hr />
 
-🤖 Note.ify is a discord bot designed to enhance the experience of live lectures and meetings.
-📝 The bot records real-time content and provides concise summaries for easy reference.
-📚 It ensures that every key point is captured and presented in a well-organized format.
-🎯 Targeted towards students seeking an efficient way to review lecture content.
-🌐 Also beneficial for professionals, researchers, and individuals looking to streamline note-taking.
-🚀 Future improvements include features like converting summary notes to the Cornell Note-taking Method, creating flashcards, and generating potential exam questions.
+- 🤖 Note.ify is a discord bot designed to enhance the experience of live lectures and meetings.
+- 📝 The bot records real-time content and provides concise summaries for easy reference.
+- 📚 It ensures that every key point is captured and presented in a well-organized format.
+- 🎯 Targeted towards students seeking an efficient way to review lecture content.
+- 🌐 Also beneficial for professionals, researchers, and individuals looking to streamline note-taking.
+- 🚀 Future improvements include features like converting summary notes to the Cornell Note-taking Method, creating flashcards, and generating potential exam questions.
