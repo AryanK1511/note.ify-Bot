@@ -33,6 +33,7 @@ const fileName = path.basename(localFilePath);
 const speech = require('@google-cloud/speech');
 const speechClient = new speech.SpeechClient();
 
+let dataRetrieved = "";
 // ===== Handles the interaction when a user enters a slash command =====
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
@@ -55,14 +56,20 @@ client.on('interactionCreate', async interaction => {
       await uploadFile();
       let transcript = await quickstart();
 
-      const apiKey = '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'; // Replace with your ChatGPT API key
-      const apiUrl = 'https://api.openai.com/v1/completions'; // Check API documentation for the correct endpoint
+      const apiKey = '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'; // Replace with your ChatGPT API key
+      const apiUrl = 'https://api.openai.com/v1/chat/completions'; // Check API documentation for the correct endpoint
 
       const inputText = transcript; // Replace with your input text
 
       const requestBody = {
-        model: 'davinci-002',
-        messages: [{ role: 'system', content: 'You are a professional note taker that summarizes important topics from given text. Ensure that the summarizes content had at least two sentences.' }, { role: 'user', content: inputText }],
+        model: 'gpt-3.5-turbo',
+        messages: [{ 
+          role: 'user', 
+          content: 'Create relevant notes from the input text and summarize them into bullet points in markdown format.' 
+        }, { 
+          role: 'user', 
+          content: inputText 
+        }],
       };
 
       const requestOptions = {
@@ -75,19 +82,24 @@ client.on('interactionCreate', async interaction => {
       };
 
       fetch(apiUrl, requestOptions)
-        .then(response => response.json())
-        .then(data => {
-          const generatedNotes = data.choices[0].message.content; // Extract generated notes from the response
+  .then(response => response.json())
+  .then(data => {
+    console.log(`Data::: ${JSON.stringify(data)}`);
+    const generatedNotes = data.choices[0].message.content; // Extract generated notes from the response
 
-          // Format the notes as Markdown (you may use a library like 'marked' here)
-          console.log(generatedNotes); // Print or use the formatted notes
-        })
-        .catch(error => console.error('Error:', error));
-      await interaction.editReply(transcript); // Edit the original reply
+    // Format the notes as Markdown (you may use a library like 'marked' here)
+    console.log(`GEN NOT -> ${generatedNotes}`); // Print or use the formatted notes
+
+    dataRetrieved = generatedNotes;
+    // Send the generatedNotes on Discord
+    interaction.editReply("Recording complete.... :white_check_mark:"); // Edit the original reply with the generated notes
+  })
+  .catch(error => console.error('Error:', error));
+
     });
 
   } else if (interaction.commandName === 'stop-recording') {
-    await interaction.reply('https://www.youtube.com/playlist?list=UUIuFRHmDktSjlHex7Hahcug&playnext=1&index=1');
+    await interaction.reply(dataRetrieved);
   }
 });
 
