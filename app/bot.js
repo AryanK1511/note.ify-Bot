@@ -65,9 +65,9 @@ client.on('interactionCreate', async interaction => {
         model: 'gpt-3.5-turbo',
         messages: [{ 
           role: 'user', 
-          content: 'Create relevant notes from the input text and summarize them into bullet points in markdown format.' 
+          content: 'Please generate relevant summary notes from the input text into bullet points in markdown format.' 
         }, { 
-          role: 'user', 
+          role: 'assistant', 
           content: inputText 
         }],
       };
